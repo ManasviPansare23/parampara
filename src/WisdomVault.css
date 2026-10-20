@@ -1,0 +1,607 @@
+
+.vault-page {
+  --vault-green: #173d32;
+  --vault-green-light: #245344;
+  --vault-gold: #c59a45;
+  --vault-paper: #f7f0df;
+  --vault-ink: #26372c;
+  min-height: 100vh;
+  background:
+    radial-gradient(ellipse at top, #fff8e9 0%, transparent 55%),
+    var(--vault-paper);
+  color: var(--vault-ink);
+  font-family: Georgia, "Times New Roman", serif;
+  padding-bottom: 28px;
+}
+
+.vault-page * {
+  box-sizing: border-box;
+}
+
+.vault-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 18px clamp(16px, 5vw, 64px);
+  border-bottom: 1px solid #d9c9a8;
+  background: rgba(255, 252, 242, 0.9);
+}
+
+.vault-brand,
+.vault-exit {
+  background: transparent;
+  border: 0;
+  color: var(--vault-green);
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.vault-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 17px;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+
+.vault-brand-mark {
+  color: #a76d25;
+  font-size: 30px;
+}
+
+.vault-top-label,
+.vault-eyebrow,
+.vault-pick-title,
+.vault-bottom-note {
+  font-family: Arial, sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+.vault-top-label {
+  color: #98713a;
+  text-align: center;
+}
+
+.vault-exit {
+  font-size: 13px;
+}
+
+.vault-hero,
+.vault-game,
+.vault-result {
+  width: min(100% - 32px, 900px);
+  margin: 0 auto;
+  padding-top: 44px;
+  text-align: center;
+  animation: vault-appear 0.5s ease both;
+}
+
+.vault-eyebrow {
+  color: #a16c29;
+  line-height: 1.6;
+}
+
+.vault-emblem,
+.vault-result-emblem {
+  display: grid;
+  place-items: center;
+  margin: 24px auto 10px;
+  width: 76px;
+  height: 76px;
+  border: 1px solid var(--vault-gold);
+  border-radius: 50%;
+  color: var(--vault-gold);
+  font-size: 42px;
+  box-shadow: 0 0 0 8px rgba(197, 154, 69, 0.09);
+}
+
+.vault-hero h1,
+.vault-game-heading h1,
+.vault-result h1 {
+  margin: 15px 0;
+  color: var(--vault-green);
+  font-size: clamp(42px, 8vw, 72px);
+  font-weight: 500;
+  line-height: 0.98;
+  letter-spacing: -2px;
+}
+
+.vault-hero h1 span {
+  color: #a76d25;
+  font-style: italic;
+}
+
+.vault-subtitle {
+  margin: 18px auto 10px;
+  color: #5b644e;
+  font-size: clamp(15px, 2.5vw, 20px);
+}
+
+.vault-description {
+  max-width: 540px;
+  margin: 12px auto;
+  color: #626455;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+.vault-stats {
+  display: flex;
+  justify-content: center;
+  gap: clamp(24px, 8vw, 85px);
+  margin: 30px 0 42px;
+  padding: 20px 12px;
+  border-top: 1px solid #ddcfb1;
+  border-bottom: 1px solid #ddcfb1;
+}
+
+.vault-stats div {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.vault-stats strong {
+  color: var(--vault-green);
+  font-size: 27px;
+  font-weight: 500;
+}
+
+.vault-stats span {
+  color: #927548;
+  font: 700 9px Arial, sans-serif;
+  letter-spacing: 1.4px;
+}
+
+.vault-pick-title {
+  margin-bottom: 20px;
+  color: #826436;
+}
+
+.vault-topic-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 13px;
+}
+
+.vault-topic-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 0;
+  min-height: 215px;
+  padding: 22px 12px 18px;
+  border: 1px solid #d9c8a3;
+  border-radius: 5px;
+  background: rgba(255, 253, 245, 0.8);
+  color: var(--vault-green);
+  cursor: pointer;
+  font-family: inherit;
+  transition:
+    transform 0.22s ease,
+    border-color 0.22s ease,
+    background 0.22s ease,
+    box-shadow 0.22s ease;
+}
+
+.vault-topic-card:hover,
+.vault-topic-card:focus-visible {
+  transform: translateY(-5px);
+  border-color: var(--vault-gold);
+  background: white;
+  box-shadow: 0 12px 30px rgba(49, 61, 37, 0.1);
+  outline: none;
+}
+
+.vault-topic-symbol {
+  display: grid;
+  place-items: center;
+  width: 53px;
+  height: 53px;
+  margin-bottom: 15px;
+  border: 1px solid #d7bc7d;
+  border-radius: 50%;
+  color: #a16c29;
+  font-size: 28px;
+}
+
+.vault-topic-card strong {
+  font-size: 17px;
+}
+
+.vault-topic-description {
+  margin-top: 9px;
+  color: #73705f;
+  font: 12px/1.6 Arial, sans-serif;
+}
+
+.vault-card-arrow {
+  margin-top: auto;
+  padding-top: 18px;
+  color: #a16c29;
+  font: 700 9px Arial, sans-serif;
+  letter-spacing: 1.5px;
+}
+
+.vault-bottom-note {
+  margin: 30px 0 0;
+  color: #a08b66;
+  font-size: 9px;
+  line-height: 1.8;
+}
+
+.vault-game {
+  max-width: 740px;
+  padding-top: 50px;
+}
+
+.vault-game-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  text-align: left;
+}
+
+.vault-game-heading h1 {
+  font-size: clamp(35px, 6vw, 54px);
+}
+
+.vault-timer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 100px;
+  padding: 12px 15px;
+  border: 1px solid #d9c49b;
+  border-radius: 5px;
+  background: #fffaf0;
+}
+
+.vault-timer span {
+  color: #947443;
+  font: 700 9px Arial, sans-serif;
+  letter-spacing: 1px;
+}
+
+.vault-timer strong {
+  margin-top: 6px;
+  color: var(--vault-green);
+  font: 700 25px Arial, sans-serif;
+  font-variant-numeric: tabular-nums;
+}
+
+.vault-timer-danger {
+  border-color: #b74737;
+  background: #fff0e9;
+}
+
+.vault-timer-danger strong {
+  color: #b74737;
+}
+
+.vault-progress {
+  height: 5px;
+  margin: 23px 0 15px;
+  overflow: hidden;
+  border-radius: 8px;
+  background: #e6dac0;
+}
+
+.vault-progress div {
+  height: 100%;
+  background: linear-gradient(90deg, #a9782d, #dfbd6d);
+  transition: width 0.3s ease;
+}
+
+.vault-question-meta {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  color: #987546;
+  font: 700 10px Arial, sans-serif;
+  letter-spacing: 1px;
+}
+
+.vault-question-card {
+  margin-top: 20px;
+  padding: clamp(20px, 5vw, 42px);
+  border: 1px solid #d9c7a1;
+  border-radius: 7px;
+  background: #fffdf6;
+  box-shadow: 0 12px 35px rgba(54, 48, 31, 0.07);
+  text-align: left;
+}
+
+.vault-question-seal {
+  color: #b48840;
+  font-size: 26px;
+  text-align: center;
+}
+
+.vault-question-card h2 {
+  margin: 15px 0 25px;
+  color: var(--vault-green);
+  font-size: clamp(23px, 4vw, 32px);
+  font-weight: 500;
+  line-height: 1.35;
+  text-align: center;
+}
+
+.vault-options {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.vault-option {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 65px;
+  padding: 13px;
+  border: 1px solid #e0d4bc;
+  border-radius: 5px;
+  background: white;
+  color: #384539;
+  cursor: pointer;
+  font: 14px/1.5 Arial, sans-serif;
+  text-align: left;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.vault-option:hover:not(:disabled) {
+  border-color: #b78a3f;
+  background: #fff8e8;
+}
+
+.vault-option:focus-visible,
+.vault-primary-button:focus-visible,
+.vault-secondary-button:focus-visible {
+  outline: 3px solid #bd9349;
+  outline-offset: 3px;
+}
+
+.vault-option:disabled {
+  cursor: default;
+}
+
+.vault-option-letter {
+  display: grid;
+  flex: 0 0 30px;
+  width: 30px;
+  height: 30px;
+  place-items: center;
+  border: 1px solid #d8c49a;
+  border-radius: 50%;
+  color: #946c2e;
+  font-size: 12px;
+}
+
+.vault-option-correct {
+  border-color: #39805d;
+  background: #eaf5e9;
+}
+
+.vault-option-wrong {
+  border-color: #bd6453;
+  background: #fff0eb;
+}
+
+.vault-option-check {
+  margin-left: auto;
+  color: #28744b;
+  font-size: 20px;
+}
+
+.vault-feedback {
+  margin-top: 22px;
+  padding: 20px;
+  border-left: 3px solid #b88a3e;
+  background: #f8f0df;
+  animation: vault-appear 0.3s ease both;
+}
+
+.vault-feedback strong {
+  color: var(--vault-green);
+  font-size: 17px;
+}
+
+.vault-feedback p {
+  color: #656453;
+  font: 14px/1.8 Arial, sans-serif;
+}
+
+.vault-primary-button,
+.vault-secondary-button {
+  min-height: 47px;
+  padding: 13px 20px;
+  border: 1px solid var(--vault-green);
+  border-radius: 4px;
+  cursor: pointer;
+  font: 700 11px Arial, sans-serif;
+  letter-spacing: 1.1px;
+  transition: transform 0.2s, background 0.2s;
+}
+
+.vault-primary-button {
+  background: var(--vault-green);
+  color: #fff8e8;
+}
+
+.vault-primary-button:hover {
+  transform: translateY(-2px);
+  background: var(--vault-green-light);
+}
+
+.vault-secondary-button {
+  background: transparent;
+  color: var(--vault-green);
+}
+
+.vault-secondary-button:hover {
+  background: #f1e6ce;
+}
+
+.vault-result {
+  max-width: 600px;
+}
+
+.vault-result-emblem {
+  width: 94px;
+  height: 94px;
+  font-size: 48px;
+}
+
+.vault-result h1 {
+  font-size: clamp(37px, 7vw, 58px);
+}
+
+.vault-score-card {
+  margin: 28px auto;
+  padding: 30px 20px;
+  border: 1px solid #d7c397;
+  border-radius: 7px;
+  background:
+    radial-gradient(ellipse at top, #fff8e9, transparent 70%),
+    #fffdf6;
+  box-shadow: 0 15px 35px rgba(54, 48, 31, 0.07);
+}
+
+.vault-score-card > span {
+  display: block;
+  color: #957444;
+  font: 700 10px Arial, sans-serif;
+  letter-spacing: 1.5px;
+}
+
+.vault-score-card > strong {
+  display: block;
+  margin: 10px 0;
+  color: var(--vault-green);
+  font-size: 68px;
+  font-weight: 500;
+}
+
+.vault-score-divider {
+  width: 65px;
+  height: 1px;
+  margin: 23px auto;
+  background: #d6bf8e;
+}
+
+.vault-score-card h2 {
+  margin: 12px 0;
+  color: #a16c29;
+  font-size: 29px;
+  font-weight: 500;
+}
+
+.vault-score-card p {
+  color: #696858;
+  font: 14px/1.8 Arial, sans-serif;
+}
+
+.vault-result-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+}
+
+@keyframes vault-appear {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 650px) {
+  .vault-top-label {
+    font-size: 8px;
+    letter-spacing: 1px;
+  }
+
+  .vault-brand {
+    gap: 5px;
+    font-size: 13px;
+    letter-spacing: 1px;
+  }
+
+  .vault-brand-mark {
+    font-size: 24px;
+  }
+
+  .vault-hero,
+  .vault-game,
+  .vault-result {
+    padding-top: 30px;
+  }
+
+  .vault-topic-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .vault-topic-card {
+    min-height: 195px;
+  }
+
+  .vault-game-heading {
+    align-items: flex-start;
+  }
+
+  .vault-timer {
+    min-width: 85px;
+    padding: 10px;
+  }
+
+  .vault-timer strong {
+    font-size: 21px;
+  }
+
+  .vault-options {
+    grid-template-columns: 1fr;
+  }
+
+  .vault-question-card {
+    padding: 20px 15px;
+  }
+
+  .vault-question-card h2 {
+    font-size: 24px;
+  }
+
+  .vault-stats {
+    gap: 25px;
+  }
+
+  .vault-stats strong {
+    font-size: 23px;
+  }
+
+  .vault-result-actions {
+    flex-direction: column;
+  }
+
+  .vault-result-actions button {
+    width: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .vault-page *,
+  .vault-page *::before,
+  .vault-page *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

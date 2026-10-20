@@ -4,6 +4,7 @@ import "./App.css";
 import Quiz from "./Quiz";
 import About from "./About";
 import Resources from "./Resources";
+import WisdomVault from "./WisdomVault";
 const topics = [
   {
     id: 1,
@@ -91,6 +92,7 @@ const [searchTerm, setSearchTerm] = useState("");
 const [activeCategory, setActiveCategory] = useState("All");
 const [showAbout, setShowAbout] = useState(false);
 const [showResources, setShowResources] = useState(false);
+const [showVault, setShowVault] = useState(false);
 
   const filteredTopics = topics.filter((topic) => {
     const search = searchTerm.toLowerCase().trim();
@@ -117,6 +119,7 @@ const [showResources, setShowResources] = useState(false);
   setActiveCategory("All");
   setShowAbout(false);
   setShowResources(false);
+  setShowVault(false);
   window.scrollTo({ top: 0, behavior: "smooth" });
 }
 
@@ -138,11 +141,13 @@ const [showResources, setShowResources] = useState(false);
       setSelectedTopic(null);
       setShowResources(false);
       setShowAbout(true);
+      setShowVault(false);
       window.scrollTo({ top: 0, behavior: "smooth" });
     }}
   >
     About
   </button>
+  
 </nav>
 
 <button
@@ -150,6 +155,7 @@ const [showResources, setShowResources] = useState(false);
     setSelectedTopic(null);
     setShowAbout(false);
     setShowResources(true);
+    setShowVault(false);
     window.scrollTo({ top: 0, behavior: "smooth" });
   }}
 >
@@ -159,12 +165,25 @@ const [showResources, setShowResources] = useState(false);
       </header>
 
      
-{showResources ? (
+{showVault ? (
+  <WisdomVault onHome={goHome} />
+) : showResources ? (
   <Resources onHome={goHome} />
 ) : showAbout ? (
   <About onExplore={goHome} />
 ) : !selectedTopic ? (
+  // Keep your existing homepage JSX here
   <>
+  <div style={{
+  background: "red",
+  color: "white",
+  padding: "20px",
+  fontSize: "24px",
+  position: "relative",
+  zIndex: 9999
+}}>
+  TEST — HOMEPAGE IS RENDERING
+</div>
           <section className="hero">
             <div className="hero-content">
               <span className="eyebrow">INDIA'S TIMELESS WISDOM</span>
@@ -180,6 +199,18 @@ const [showResources, setShowResources] = useState(false);
               <a className="primary-button" href="#explore">
                 Explore traditions <span>→</span>
               </a>
+              <button
+  className="wisdom-vault-launch"
+  onClick={() => {
+    setSelectedTopic(null);
+    setShowAbout(false);
+    setShowResources(false);
+    setShowVault(true);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }}
+>
+  ✦ ENTER THE WISDOM VAULT →
+</button>
             </div>
 
             <div className="hero-art" aria-label="Illustration of Indian heritage">
@@ -348,9 +379,7 @@ const [showResources, setShowResources] = useState(false);
           <button className="primary-button" onClick={goHome}>
             Explore all traditions <span>→</span>
           </button>
-          <Resources/>
-          <Quiz />
-          <About />
+        
         </main>
       )}
 

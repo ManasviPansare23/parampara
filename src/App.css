@@ -1094,3 +1094,24 @@ a:focus-visible {
     padding: 55px 22px;
   }
 }
+
+.wisdom-vault-launch {
+  display: inline-block;
+  margin: 24px 0;
+  padding: 16px 26px;
+  border: 1px solid #c59a45;
+  border-radius: 5px;
+  background: #173d32;
+  color: #fff8e8;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  cursor: pointer;
+  position: relative;
+  z-index: 5;
+}
+
+.wisdom-vault-launch:hover {
+  background: #245344;
+  transform: translateY(-2px);
+}
