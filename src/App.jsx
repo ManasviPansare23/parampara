@@ -1,5 +1,5 @@
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
 import Quiz from "./Quiz";
 import About from "./About";
@@ -93,8 +93,36 @@ const [activeCategory, setActiveCategory] = useState("All");
 const [showAbout, setShowAbout] = useState(false);
 const [showResources, setShowResources] = useState(false);
 const [showVault, setShowVault] = useState(false);
+const [databaseTopics, setDatabaseTopics] = useState([]);
+const [topicsLoading, setTopicsLoading] = useState(true);
+const [topicsError, setTopicsError] = useState("");
 
-  const filteredTopics = topics.filter((topic) => {
+useEffect(() => {
+  async function fetchTopics() {
+    try {
+      const response = await fetch("http://localhost:5000/api/topics");
+
+      if (!response.ok) {
+        throw new Error("Failed to load topics");
+      }
+
+      const data = await response.json();
+      setDatabaseTopics(data);
+    } catch (error) {
+      console.error("Error loading topics:", error);
+      setTopicsError("Could not load topics from the database.");
+    } finally {
+      setTopicsLoading(false);
+    }
+  }
+
+  fetchTopics();
+}, []);
+
+const availableTopics =
+  databaseTopics.length > 0 ? databaseTopics : topics;
+
+  const filteredTopics = availableTopics.filter((topic) => {
     const search = searchTerm.toLowerCase().trim();
 
     const matchesSearch =
@@ -174,16 +202,7 @@ const [showVault, setShowVault] = useState(false);
 ) : !selectedTopic ? (
   // Keep your existing homepage JSX here
   <>
-  <div style={{
-  background: "red",
-  color: "white",
-  padding: "20px",
-  fontSize: "24px",
-  position: "relative",
-  zIndex: 9999
-}}>
-  TEST — HOMEPAGE IS RENDERING
-</div>
+  
           <section className="hero">
             <div className="hero-content">
               <span className="eyebrow">INDIA'S TIMELESS WISDOM</span>
